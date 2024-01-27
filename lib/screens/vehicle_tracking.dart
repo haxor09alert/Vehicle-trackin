@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:google_mao/features/widgets/responsive_text.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class OrderTrackingPage extends StatefulWidget {
@@ -20,20 +21,20 @@ class OrderTrackingPageState extends State<OrderTrackingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title:  ResponsiveText(
           "Vehicle Track",
           style: TextStyle(color: Colors.black, fontSize: 16),
-        ),
-      ),
-      body: GoogleMap(initialCameraPosition: CameraPosition(target: sourceLocation, zoom: 14.0),
-      markers:{
-      Marker(
-        markerId: MarkerId("source"),
-        position: sourceLocation,
           ),
-      Marker(
-        markerId: MarkerId("source"),
-        position: sourceLocation,
+        ),
+        body: GoogleMap(initialCameraPosition: CameraPosition(target: sourceLocation, zoom: 14.0),
+        markers:{
+        Marker(
+          markerId: MarkerId("source"),
+          position: sourceLocation,
+          ),
+        Marker(
+          markerId: MarkerId("source"),
+          position: sourceLocation,
           ),
         }
       )
