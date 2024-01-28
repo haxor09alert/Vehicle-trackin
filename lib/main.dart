@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_mao/screens/vehicle_tracking.dart';
+import 'package:google_mao/screens/vehicle_tracking2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: VehicleTrackingPage(),
+      home: VehicleTracking2(),
     );
   }
 }
