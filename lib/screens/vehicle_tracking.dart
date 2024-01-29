@@ -1,7 +1,10 @@
 
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_mao/core/constants/constants.dart';
 import 'package:google_mao/features/widgets/responsive_text.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -14,6 +17,7 @@ class VehicleTrackingPage extends StatefulWidget {
 }
 
 class VehicleTrackingPageState extends State<VehicleTrackingPage> {
+  late LatLng _currentPosition;
   // final Completer<GoogleMapController> _controller = Completer();
 
   static const LatLng sourceLocation = LatLng(37.33500926, -122.03272188);
@@ -42,8 +46,46 @@ class VehicleTrackingPageState extends State<VehicleTrackingPage> {
   @override
   void initState(){
     getPolyPoints();
+    getCurrentLocat();
     // TODO : implement initstate
     super.initState();
+  }
+   CameraPosition _kGooglePlex = const CameraPosition(
+    target: LatLng(37.33500926, -122.03272188),
+    zoom: 14.4746,
+  );
+  Future<void> getCurrentLocat() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+    Position position;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await Geolocator.openLocationSettings();
+      if (!serviceEnabled) {
+        return;
+      }
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission != LocationPermission.whileInUse &&
+          permission != LocationPermission.always) {
+        return;
+      }
+    }
+
+    position = await Geolocator.getCurrentPosition();
+
+    _currentPosition = LatLng(position.latitude, position.longitude);
+
+    _kGooglePlex = CameraPosition(
+      target: _currentPosition,
+      zoom: 14.4746,
+    );
+
+    setState(() {});
   }
 
   @override
@@ -60,12 +102,9 @@ class VehicleTrackingPageState extends State<VehicleTrackingPage> {
             ),
         ),
         ),
-        body: GoogleMap(initialCameraPosition: CameraPosition(
-          target: sourceLocation, 
-          zoom: 14.5
-          ),
+        body: GoogleMap(initialCameraPosition: _kGooglePlex,
         markers:{
-        Marker(
+        const Marker(
           markerId: MarkerId("source"),
           position: sourceLocation,
           ),

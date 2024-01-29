@@ -19,7 +19,16 @@ class _VehicleTracking2State extends State<VehicleTracking2> {
   final Completer<GoogleMapController> _controller = Completer();
 
 
-  List<LatLng>polylineCoordinates = [];
+  List<LatLng>polylineCoordinates =  [
+      LatLng(27.70511517928815, 85.3291366168589),
+      LatLng(27.70568873516667, 85.3297037081462),
+      LatLng(27.70609379655214, 85.33000936073832),
+      LatLng(27.706398442569697, 85.3302592653734),
+      LatLng(27.70688636761964, 85.33062592441175),
+      LatLng(27.707238665126628, 85.33092773231718),
+      LatLng(27.707500760118467, 85.33133719145003),
+      LatLng(27.707861565181105, 85.33145253205083),
+    ];
 
   static const LatLng sourceLocation = LatLng(27.706309352808187, 85.33000065471418);
   static const LatLng destination = LatLng(27.719982708219845, 85.31878219897762);
@@ -122,10 +131,10 @@ Future<void> getCurrentLocation() async {
           myLocationButtonEnabled: true,
           polylines: Set.of([
             Polyline(
-                  polylineId: PolylineId("test"),
+                  polylineId: PolylineId("softwarica_branch"),
                   color: Colors.blue,
                   points: polylineCoordinates,
-                  width: 4,
+                  width: 5,
             )
           ]),
           onMapCreated: (GoogleMapController controller) {
@@ -137,7 +146,7 @@ Future<void> getCurrentLocation() async {
         floatingActionButton: FloatingActionButton.extended(
           onPressed: _track_vehicle,
           label: const ResponsiveText('Track Vehicle'),
-          icon: const Icon(Icons.directions),
+          icon: const Icon(Icons.directions_bus),
         ),
       ),
     );
@@ -153,20 +162,35 @@ Future<void> getCurrentLocation() async {
 
   Marker _setMarker() {
     LatLng singaDurbarPosition =
-        const LatLng(27.69803150917992, 85.32388744895596);
-    const double hueRed = 0.0;
-    const double hueOrange = 30.0;
-    const double hueGreen = 120.0;
-    const double hueCyan = 180.0;
-    const double hueAzure = 210.0;
-    const double hueBlue = 240.0;
-    const double hueViolet = 270.0;
-    const double hueMagenta = 300.0;
-    const double hueRose = 330.0;
-    const double hueYellow = 60.0;
-    return Marker(
-        markerId: const MarkerId("softwarica_branch"),
-        icon: BitmapDescriptor.defaultMarkerWithHue(hueGreen),
-        position: _currentPosition);
+      const LatLng(27.69803150917992, 85.32388744895596);
+      return Marker(
+          markerId: const MarkerId("softwarica_branch"),
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+          position: _currentPosition);
+          
+    // Marker _setMarker() {
+    //   double rotation = bearingBetweenLatLngs(_currentPosition, polylineCoordinates.first);
+
+    //   return Marker(
+    //     markerId: const MarkerId("softwarica_branch"),
+    //     icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+    //     position: _currentPosition,
+    //     rotation: rotation,
+    //   );
+    // }
+
+    // double bearingBetweenLatLngs(LatLng latLng1, LatLng latLng2) {
+    //   double lat1 = latLng1.latitude * (3.1415 / 180);
+    //   double lon1 = latLng1.longitude * (3.1415 / 180);
+    //   double lat2 = latLng2.latitude * (3.1415 / 180);
+    //   double lon2 = latLng2.longitude * (3.1415 / 180);
+
+    //   double deltaLon = lon2 - lon1;
+    //   double y = sin(deltaLon) * cos(lat2);
+    //   double x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(deltaLon);
+    //   double radiansBearing = atan2(y, x);
+
+    //   return radiansBearing * (180 / 3.1415);
+  // }
   }
 }
