@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_mao/screens/vehicle_tracking.dart';
+// import 'package:google_mao/screens/vehicle_tracking.dart';
 import 'package:google_mao/screens/vehicle_tracking2.dart';
 
 void main() {
