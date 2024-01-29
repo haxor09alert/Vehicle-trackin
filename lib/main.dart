@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_mao/screens/splash_screen.dart';
 // import 'package:google_mao/screens/vehicle_tracking.dart';
 import 'package:google_mao/screens/vehicle_tracking2.dart';
+
+import 'screens/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +25,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: VehicleTracking2(),
+      home: SplashScreen(),
     );
   }
 }

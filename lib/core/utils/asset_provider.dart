@@ -2,16 +2,11 @@
 
 import '../constants/constant_path.dart';
 
-class _AssetsImagesGen {
-  const _AssetsImagesGen();
+class _AssetsImageGen {
+  const _AssetsImageGen();
 
 
-  String get myaibot => '$kImagesPath/myaibot.png';
-  String get mylessonplan => '$kImagesPath/mylessonplan.png';
-  String get myqas => '$kImagesPath/myqas.png';
-  String get routine => '$kImagesPath/routine.png';
-  String get measure => '$kImagesPath/scale.png';
-  String get image_text => '$kImagesPath/image_text.png';
+  String get Logo => '$kImagesPath/TrashsetLogo.png';
 
 }
 
@@ -28,7 +23,7 @@ class _AssetsSvgImagesGen {
 
 class Assets {
   Assets._();
-  static const images = _AssetsImagesGen();
+  static const images = _AssetsImageGen();
   static const svgImages = _AssetsSvgImagesGen();
 
 
