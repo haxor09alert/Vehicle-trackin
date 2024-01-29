@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_mao/core/utils/asset_provider.dart';
 import 'package:google_mao/screens/signup.dart';
+import 'package:google_mao/screens/vehicle_tracking.dart';
 // import 'package:http/http.dart' as http;
 // import 'dart:convert';
 
@@ -187,7 +188,7 @@ class StartState extends State<LoginScreen> {
                 //   // ignore: use_build_context_synchronously
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const VehicleTracking2()),
+                  MaterialPageRoute(builder: (context) => const VehicleTrackingPage()),
                 );
                 // } else {
                 //   // authentication failed, show error message
