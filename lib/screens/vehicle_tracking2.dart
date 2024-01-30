@@ -129,6 +129,20 @@ Future<void> getCurrentLocation() async {
             ),
           ),
         ),
+        leading: IconButton(
+            icon: Icon(
+              Icons.account_circle, // Change this to the profile icon you want
+              size: 30,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserScreen()),
+              );
+              // Add your profile icon onPressed logic here
+            },
+          
+        ),
         ),
         body: GoogleMap(
           mapType: MapType.normal,
