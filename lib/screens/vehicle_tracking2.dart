@@ -2,7 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mao/features/widgets/responsive_text.dart';
+import 'package:google_mao/screens/truck.dart';
+import 'package:google_mao/screens/user.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -114,6 +117,19 @@ Future<void> getCurrentLocation() async {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color(0xFF1565C0), // Blue color for AppBar
+        centerTitle: true,
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Text(
+            'Vehicle Tracking',
+            style: GoogleFonts.bebasNeue(
+              fontSize: 25,
+            ),
+          ),
+        ),
+        ),
         body: GoogleMap(
           mapType: MapType.normal,
           initialCameraPosition: _kGooglePlex,
@@ -138,7 +154,7 @@ Future<void> getCurrentLocation() async {
           onPressed: (){
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MyHomePage()),
+                    MaterialPageRoute(builder: (context) => ViewDustbinsScreen()),
                   );
                 }, 
           label: const ResponsiveText('Track Vehicle'),
