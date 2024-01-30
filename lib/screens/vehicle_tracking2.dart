@@ -144,7 +144,12 @@ Future<void> getCurrentLocation() async {
         floatingActionButtonLocation:
             FloatingActionButtonLocation.miniCenterFloat,
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: _track_vehicle,
+          onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()),
+                  );
+                }, 
           label: const ResponsiveText('Track Vehicle'),
           icon: const Icon(Icons.directions_bus),
         ),
