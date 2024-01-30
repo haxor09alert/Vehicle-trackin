@@ -69,7 +69,40 @@ class _ViewDustbinsScreenState extends State<ViewDustbinsScreen> {
               rows: dustbins.map<DataRow>((dustbin) {
                 return DataRow(
                   cells: [
-                    DataCell(Text(dustbin['dustbin_id'])),
+                    DataCell(Text('dustbin_id')),
+                    DataCell(Text(dustbin['dustbin_Address'])),
+                    DataCell(Text(dustbin['dustbinstatus'])),
+                  ],
+                );
+              }).toList(),
+              
+            ),
+            DataTable(
+              columns: const [
+                DataColumn(label: Text('001')),
+                DataColumn(label: Text('MaitiDevi')),
+                DataColumn(label: Text('Active')),
+              ],
+              rows: dustbins.map<DataRow>((dustbin) {
+                return DataRow(
+                  cells: [
+                    DataCell(Text('dustbin_id')),
+                    DataCell(Text(dustbin['dustbin_Address'])),
+                    DataCell(Text(dustbin['dustbinstatus'])),
+                  ],
+                );
+              }).toList(),
+            ),
+            DataTable(
+              columns: const [
+                DataColumn(label: Text('002')),
+                DataColumn(label: Text('Baneshwor')),
+                DataColumn(label: Text('Active')),
+              ],
+              rows: dustbins.map<DataRow>((dustbin) {
+                return DataRow(
+                  cells: [
+                    DataCell(Text('dustbin_id')),
                     DataCell(Text(dustbin['dustbin_Address'])),
                     DataCell(Text(dustbin['dustbinstatus'])),
                   ],
