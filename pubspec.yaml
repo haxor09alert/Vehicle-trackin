@@ -41,6 +41,7 @@ dependencies:
   flutter_svg: ^1.1.0
   google_fonts: ^4.0.4
   flutter_rating_bar: ^4.0.1
+  thingsboard_client: ^1.0.8
 
 dev_dependencies:
   flutter_test:
